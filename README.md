@@ -57,7 +57,7 @@
 | 분야       | 기술                                                   |
 | -------- | ---------------------------------------------------- |
 | Frontend | React.js / TypeScript / Tailwind |
-| Auth     | Naver OAuth (네이버 로그인)                                |
+| Auth     | Naver OAuth                                |
 | DB & API | Supabase                            |
 | 배포       | Vercel                                               |
 | 상태 관리    | Zustand                                     |
