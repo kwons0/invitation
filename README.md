@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📱 나만의 모바일 청첩장
 
-## Getting Started
+“사용자가 직접 디자인하고 구성할 수 있는 모바일 청첩장”
+완벽하게 마음에 드는 청첩장이 없어 시작된, 디자인 중심 + 커스터마이징 가능한 모바일 청첩장 서비스
 
-First, run the development server:
+🔗 배포 링크 : 서비스 준비 중 <br/>
+📖 블로그 링크 : https://velog.io/@kwons0/series/모바일청첩장
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 1. 💡 시작하게 된 이유
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+결혼을 준비하는 지인들이 모바일 청첩장을 알아보며 공통적으로 이야기했습니다.  
+“선택지는 많은데, 디자인이나 구성까지 완벽하게 마음에 드는 청첩장은 거의 없다.”
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+실제로 기존 청첩장 서비스를 살펴보면  
+- 템플릿 수는 많지만 디자인 스타일이 제한적이거나,  
+- 정보 흐름이 자연스럽지 않거나,  
+- 원하는 구성 요소만 선택하거나 순서를 바꾸는 기능이 부족했습니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+이 문제를 보면서 <b>‘사용자가 직접 구성하고, 자기 스타일에 맞게 편집할 수 있는 청첩장은 없을까?’</b>라는 고민이 시작되었습니다.  
+디자인과 프론트엔드 개발을 모두 경험해온 만큼, <b>사용자가 진짜 원하는 방식으로 만들 수 있는 모바일 청첩장을 직접 만들기로 했습니다.</b>
 
-## Learn More
+## 2. ✅ 해결하고 싶은 문제
+| 문제           | 설명                                        |
+| ------------ | ----------------------------------------- |
+| 디자인 다양성 부족   | 템플릿은 많지만 스타일이 비슷하거나 완성도가 낮음               |
+| 제한적인 커스터마이징 | 일부 서비스는 편집 기능을 제공하지만, 구성 순서 변경이나 요소 제거 등 사용자가 원하는 수준의 자유도는 부족함        |
+| 정보 과잉 또는 부족  | 계좌, 지도, 사진 등 특정 구성 요소가 기본 포함되거나 삭제/숨김이 어려워 필요한 정보만 담기 어렵거나 흐름이 부자연스러움          |
 
-To learn more about Next.js, take a look at the following resources:
+## 3. 🧩 서비스 핵심 컨셉
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+이 서비스의 핵심은 “사용자가 원하는 정보만 선택하고, 원하는 순서대로 구성할 수 있는 모바일 청첩장”입니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 기본적으로 <b>4개의 템플릿 (A/B/C/D)</b> 을 제공하며, 선택 즉시 청첩장을 생성할 수 있습니다.  
+- 하지만 여기서 끝나는 것이 아니라, 템플릿 위에 <b>‘편집하기’ 버튼을 눌러 커스터마이징을 시작</b>할 수 있습니다.
 
-## Deploy on Vercel
+커스터마이징 방식은, 페이지가 길어지면 혼동을 우려하여 전체 구조를 Drag & Drop하는 대신 다음과 같은 구조를 따릅니다:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- <b>컴포넌트 ON/OFF</b>  
+  - 인사말, 사진 갤러리, 일정, 지도, 계좌 정보 등 원하는 구성 요소만 선택해 사용할 수 있습니다.
+- <b>순서 변경 가능</b>  
+  - 선택한 컴포넌트는 위/아래 버튼 또는 간단한 리스트 이동으로 순서를 조정할 수 있습니다.
+- <b>실시간 미리보기</b>  
+  - 화면 왼쪽에는 실제 청첩장 화면이 실시간으로 표시되고,  
+  - 오른쪽에서는 각 컴포넌트의 내용과 설정을 수정할 수 있는 패널이 제공됩니다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+이 구조를 통해 사용자가 쉽게 사용할 수 있으면서도, 자신만의 스타일을 담을 수 있는 유연한 편집 경험을 제공하고자 합니다.
+
+
+## 4. 📌 주요 기능 정리
+| 구분    | 기능                          | 설명                      |
+| ----- | --------------------------- | ----------------------- |
+| 인증    | 네이버 로그인(OAuth)              | 소셜 로그인 기반 사용자 인증        |
+| 템플릿   | 기본 템플릿 A/B/C/D              | 스타일과 흐름이 다른 4가지 방식 제공   |
+| 구성 요소 | 인사말 / 일정 / 갤러리 / 지도 / 계좌 정보 등 추가 예정 | ON/OFF · 순서 변경 가능       |
+| 편집 화면 | 좌측 미리보기 + 우측 설정 패널          | 변경 즉시 반영되는 실시간 UI       |
+| 저장    | 임시 저장 / 불러오기                | 마이페이지에서 저장한 청첩장 확인 및 수정 |
+
+
+## 5. 🛠 기술 스택 (예정)
+| 분야       | 기술                                                   |
+| -------- | ---------------------------------------------------- |
+| Frontend | Next.js / TypeScript / Tailwind |
+| Auth     | Naver OAuth                                |
+| DB & API | Supabase                            |
+| 배포       | Vercel                                               |
+| 상태 관리    | Zustand                                     |
+| 디자인      | Figma 기반 UI 시스템 설계                                   |
